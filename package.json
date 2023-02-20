@@ -1,0 +1,20 @@
+{
+  "name": "express-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "env:dev": "./scripts/switchEnv.sh dev",
+    "env:prod": "./scripts/switchEnv.sh prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/typescript": "^2.0.0",
+  }
+}
