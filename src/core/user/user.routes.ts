@@ -5,7 +5,7 @@ import { jwtGuard } from "../../utils/jwt.guard";
 const userRouter = Router();
 
 userRouter.get("/all", getAllUsers);
-userRouter.get("/:userId", getUsersById);
-userRouter.delete("/:userId", deleteUser);
+userRouter.get("/:userId", jwtGuard, getUsersById);
+userRouter.delete("/:userId", jwtGuard, deleteUser);
 
 export = userRouter;
