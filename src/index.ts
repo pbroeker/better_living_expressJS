@@ -1,5 +1,6 @@
 import express, { Express } from "express";
 import * as dotenv from "dotenv";
+import passport from "passport";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import bodyParser from "body-parser";
@@ -17,6 +18,9 @@ app.use(helmet());
 app.use(morgan("dev"));
 main(DB_URL);
 
+// user routes
+app.use("/auth", authRouter);
+app.use("/user", userRouter);
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
