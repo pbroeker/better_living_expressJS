@@ -7,6 +7,11 @@ import bodyParser from "body-parser";
 import { main } from "./database/mongo.db";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import {
+  livingAreaRouter,
+  userRouter,
+  authRouter,
+} from "./routes";
 import morgan from "morgan";
 import { initStrategy } from "./strategies/jwt.strategy";
 import { swaggerOptions } from "./swaggerui/swagger";
@@ -29,6 +34,7 @@ main(DB_URL);
 // user routes
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use("/area", livingAreaRouter);
 
 const specs = swaggerJsdoc(swaggerOptions);
 app.use(
