@@ -5,8 +5,11 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import { main } from "./database/mongo.db";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 import morgan from "morgan";
 import { initStrategy } from "./strategies/jwt.strategy";
+import { swaggerOptions } from "./swaggerui/swagger";
 dotenv.config();
 
 const app: Express = express();
@@ -26,6 +29,14 @@ main(DB_URL);
 // user routes
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+
+const specs = swaggerJsdoc(swaggerOptions);
+app.use(
+  "/api",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
