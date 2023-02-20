@@ -11,6 +11,7 @@ import {
   livingAreaRouter,
   userRouter,
   authRouter,
+  userImageRouter,
 } from "./routes";
 import morgan from "morgan";
 import { initStrategy } from "./strategies/jwt.strategy";
@@ -35,6 +36,7 @@ main(DB_URL);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/area", livingAreaRouter);
+app.use("/userimage", userImageRouter);
 
 const specs = swaggerJsdoc(swaggerOptions);
 app.use(
